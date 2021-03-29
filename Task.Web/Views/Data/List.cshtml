@@ -1,0 +1,34 @@
+﻿@using Task.API.Entity
+@model List<Data>
+@{
+    ViewData["Title"] = "List";
+
+}
+
+
+<h1>List</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tarih</th>
+            <th>Toplam İşlem Miktarı(MWh)</th>
+            <th>Toplam İşlem Tutarı</th>
+            <th>Ağırlık Ortalama Fiyat</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Conract</td>
+                <td>@item.Quantity</td>
+                <td>@item.Price</td>
+                @if (item.Quantity!=0)
+                {
+                <td>@(item.Price/item.Quantity)</td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+
